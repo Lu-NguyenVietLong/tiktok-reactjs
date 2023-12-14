@@ -19,6 +19,7 @@
    position: relative;
    height: 50px;
    margin-top: -8px;
+   flex-shrink: 0;
 }
 
 .back-btn {
@@ -37,4 +38,8 @@
 
 .separate {
    border-top: 1px solid #ccc;
+}
+
+.menu-body {
+   overflow-y: overlay;
 }

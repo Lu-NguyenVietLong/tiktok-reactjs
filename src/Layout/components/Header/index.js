@@ -11,16 +11,17 @@ import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'tippy.js/dist/tippy.css';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Button from '../../../Button';
-import Menu from '../../../Popper/Menu';
+import Button from '../../../components/Button';
+import Menu from '../../../components/Popper/Menu';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 import { MessagesIcon, MailboxIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '../Search';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -37,6 +38,7 @@ const MENU_ITEM = [
                title: 'English',
             },
             {
+               type: 'languages',
                code: 'vi',
                title: 'Vietnamese',
             },
@@ -55,18 +57,11 @@ const MENU_ITEM = [
 ];
 
 function Header() {
-   const [searchResult, setSearchResult] = useState([]);
    const currentUser = true;
-
-   useEffect(() => {
-      setTimeout(() => {
-         setSearchResult([3, 2, 4]);
-      }, 0);
-   }, []);
 
    const handleMenuChange = (menuItem) => {
       switch (menuItem.type) {
-         case 'language':
+         case 'languages':
             break;
          default:
             console.log('error');
@@ -101,9 +96,9 @@ function Header() {
    return (
       <header className={cx('wrapper')}>
          <div className={cx('inner')}>
-            <div className={cx('logo')}>
+            <Link to={config.routes.home} className={cx('logo')}>
                <img src={images.logo} alt="TikTOk" />
-            </div>
+            </Link>
             {/* Search */}
             <Search />
             <div className={cx('actions')}>
@@ -133,7 +128,7 @@ function Header() {
                   {currentUser ? (
                      <Image
                         className={cx('user-avatar')}
-                        src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/31f1b036676e244b432d2f6f9c3065eb~c5_100x100.jpeg?x-expires=1702476000&x-signature=QlMOt1Sz%2FRUIyxfv5DJPYdGWHZM%3D"
+                        src="https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg"
                         alt=""
                      />
                   ) : (

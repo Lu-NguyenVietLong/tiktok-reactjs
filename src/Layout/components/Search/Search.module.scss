@@ -35,6 +35,7 @@
       outline: none;
       flex: 1;
       caret-color: var(--primary);
+      padding-right: 40px;
 
       &:not(:placeholder-shown) ~ .search-button {
          color: rgba(14, 13, 13, 0.9);
